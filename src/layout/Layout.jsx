@@ -1,10 +1,14 @@
-import{Outlet} from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
+
+
 export default function Layout() {
-    return(
-        <>
-            <Navbar/>
-            <Outlet />
-        </>
-    )
+  return (
+    <div className="flex min-h-screen flex-col bg-gray-50 text-gray-900">
+      <Navbar />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+    </div>
+  );
 }

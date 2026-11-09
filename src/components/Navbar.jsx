@@ -13,12 +13,42 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const linkClass = ({ isActive }) =>
         `block px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive
-            ? "text-indigo-600 bg-indigo-50"
-            : "text-gray-700 hover:text-indigo-600 hover:bg-gray-100"
+            ? "text-white bg-indigo-600"
+            : "text-slate-300 hover:text-white hover:bg-slate-800"
         }`;
 
     return (
-        <header className="sticky top-0 z-50 bg-slate-900 ">
+        <header className="sticky top-0 z-50 bg-slate-900/90  backdrop-blur border-b border-slate-800">
+            <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+
+                <Link to="/" className="flex items-center gap-2.5 group">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-sm font-bold text-[#1C232A] shadow-md shadow-[#6CB8E8]/20 transition-transform duration-300 group-hover:scale-105">
+                        RA
+                    </div>
+
+                    <div className="flex flex-col leading-tight">
+                        <span className="text-base font-bold tracking-tight text-white">
+                            Rida Akram
+                        </span>
+                        <span className="text-[10px] font-medium tracking-[0.15em] uppercase text-gray-400">
+                            Software Engineer
+                        </span>
+                    </div>
+                </Link>
+                <ul className="hidden md:flex items-center gap-2">
+                    {
+                        Links.map((l)=>
+                        <li key={l.to}>
+                            <NavLink to={l.to} className={linkClass}>
+{l.label}
+                            </NavLink>
+                        </li>)
+                    }
+
+                </ul>
+
+
+            </nav>
 
         </header>
     );
